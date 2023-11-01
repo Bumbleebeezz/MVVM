@@ -20,9 +20,10 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding MyText, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding MyTextReversed, UpdateSourceTrigger=PropertyChanged}"/>
         <Button
             Content="Reverse Text"
+            Command="{Binding UpdateTextReveredCommand}"
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="1" />

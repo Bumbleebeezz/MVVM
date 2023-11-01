@@ -1,4 +1,6 @@
-﻿using MVVM.Models;
+﻿using System.Windows.Input;
+using MVVM.Commands;
+using MVVM.Models;
 
 namespace MVVM.ViewModels;
 
@@ -17,8 +19,25 @@ public class DemoViewModel : ViewModelBase
             OnPropertyChanged();
         }
     }
+
+    private string myTextReversed;
+
+    public string MyTextReversed    
+    {
+        get { return myTextReversed; }
+        set
+        {
+            myTextReversed = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public ICommand UpdateTextReveredCommand { get; }
+
     public DemoViewModel(DemoModel demoModel)
     {
         _demoModel = demoModel;
+
+        UpdateTextReveredCommand = new DemoCommand(demoModel, this);
     }
 }
