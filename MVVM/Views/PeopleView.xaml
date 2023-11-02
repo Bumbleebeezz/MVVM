@@ -39,7 +39,10 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Label Grid.Column="0">FirstName</Label>
+            <Label 
+                Grid.Row="0"
+                Grid.Column="0"
+                >FirstName</Label>
             <TextBox
                 Name="FirstNameTxtB"
                 Grid.Column="1"
@@ -57,18 +60,21 @@
                 Text="{Binding EditLastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <Button 
                 Name="UpdateBtn" 
+                Background="Teal"
                 Command="{Binding UpdateSelectedPersonCommand}" 
                 Grid.Row="2" 
                 Grid.Column="1" 
                 >Update</Button>
             <Button 
                 Name="AddBtn" 
+                Background="Teal"
                 Command="{Binding AddNewPersonCommand}" 
                 Grid.Row="3" 
                 Grid.Column="1"
                 >Add</Button>
             <Button 
                 Name="RemoveBtn" 
+                Background="Teal"
                 Command="{Binding RemoveSelectedPersonCommand}" 
                 Grid.Row="4" 
                 Grid.Column="1"

@@ -9,8 +9,8 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    FontFamily="Consolas"
-    FontSize="25"
+    FontFamily="Yu Gothic Light"
+    FontSize="20"
     mc:Ignorable="d">
     <Grid>
         <TabControl>

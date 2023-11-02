@@ -29,6 +29,7 @@
             Text="{Binding MyTextReversed, UpdateSourceTrigger=PropertyChanged}"/>
         <Button
             Content="Reverse Text"
+            Background="Teal"
             Command="{Binding UpdateTextReveredCommand}"
             Grid.Row="0"
             Grid.RowSpan="2"
