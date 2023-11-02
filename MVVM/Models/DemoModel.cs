@@ -2,7 +2,7 @@
 
 public class DemoModel
 {
-    public string MyText { get; set; } = "Yay!";
+    public string MyText { get; set; } = string.Empty;
 
     public string ReverseMyText()
     {

@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:MVVM.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:MVVM.ViewModels"
+    d:DataContext="{d:DesignInstance viewModels:DemoViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    d:DataContext="{d:DesignInstance viewModels:DemoViewModel}"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,13 +19,19 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding MyText, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding MyTextReversed, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Text="{Binding MyText, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Text="{Binding MyTextReversed, UpdateSourceTrigger=PropertyChanged}"/>
         <Button
             Content="Reverse Text"
             Command="{Binding UpdateTextReveredCommand}"
             Grid.Row="0"
             Grid.RowSpan="2"
-            Grid.Column="1" />
+            Grid.Column="1"/>
     </Grid>
 </UserControl>

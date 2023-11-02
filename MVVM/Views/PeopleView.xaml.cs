@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for DemoView.xaml
+    /// Interaction logic for PeopleView.xaml
     /// </summary>
-    public partial class DemoView : UserControl
+    public partial class PeopleView : UserControl
     {
-        public DemoView()
+        public PeopleView()
         {
             InitializeComponent();
         }

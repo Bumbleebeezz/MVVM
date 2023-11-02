@@ -21,7 +21,8 @@ namespace MVVM
 
             var demoModel = new DemoModel();
             var demoViewModel = new DemoViewModel(demoModel);
-            var mainViewModel = new MainViewModel(demoViewModel);
+            var peopleViewModel = new PeopleViewModel();
+            var mainViewModel = new MainViewModel(demoViewModel, peopleViewModel);
 
             var mainWindow = new MainWindow(){DataContext = mainViewModel};
 

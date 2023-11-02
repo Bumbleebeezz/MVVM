@@ -13,6 +13,13 @@
     FontSize="25"
     mc:Ignorable="d">
     <Grid>
-        <views:DemoView DataContext="{Binding CurrentViewModel}"/>
+        <TabControl>
+            <TabItem Header="Reverse">
+                <views:DemoView DataContext="{Binding DemoViewModel}" Grid.Row="0"/>
+            </TabItem>
+            <TabItem Header="People">
+                <views:PeopleView DataContext="{Binding PeopleViewModel}" Grid.Row="1"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

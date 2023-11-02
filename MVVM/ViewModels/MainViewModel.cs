@@ -1,11 +1,17 @@
-﻿namespace MVVM.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace MVVM.ViewModels;
 
 public class MainViewModel
 {
-    public ViewModelBase CurrentViewModel { get; }
+    public ObservableObject DemoViewModel { get; }
+    public ObservableObject PeopleViewModel { get; }
 
-    public MainViewModel(ViewModelBase currentViewModel)
+
+
+    public MainViewModel(ObservableObject demoViewModel, ObservableObject peopleViewModel)
     {
-        CurrentViewModel = currentViewModel;
+        DemoViewModel = demoViewModel;
+        PeopleViewModel = peopleViewModel;
     }
 }

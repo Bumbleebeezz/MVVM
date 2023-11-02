@@ -1,14 +1,13 @@
 ﻿using System.Windows.Input;
-using MVVM.Commands;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MVVM.Models;
 
 namespace MVVM.ViewModels;
 
-public class DemoViewModel : ViewModelBase
+public class DemoViewModel : ObservableObject
 {
     private readonly DemoModel _demoModel;
-
-    private string _myText;
 
     public string MyText
     {
@@ -20,24 +19,29 @@ public class DemoViewModel : ViewModelBase
         }
     }
 
-    private string myTextReversed;
+    private string _myTextReversed;
 
     public string MyTextReversed    
     {
-        get { return myTextReversed; }
+        get { return _myTextReversed; }
         set
         {
-            myTextReversed = value;
+            _myTextReversed = value;
             OnPropertyChanged();
         }
     }
 
-    public ICommand UpdateTextReveredCommand { get; }
+    public IRelayCommand UpdateTextReveredCommand { get; }
 
     public DemoViewModel(DemoModel demoModel)
     {
         _demoModel = demoModel;
 
-        UpdateTextReveredCommand = new DemoCommand(demoModel, this);
+        UpdateTextReveredCommand = new RelayCommand(UpdateTextReversedCommandExecute);
+    }
+
+    private void UpdateTextReversedCommandExecute() 
+    {
+        MyTextReversed = _demoModel.ReverseMyText();
     }
 }
