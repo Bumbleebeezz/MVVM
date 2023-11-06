@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MVVM.Enums;
 using MVVM.Models;
 using MVVM.Services;
 
@@ -26,12 +27,12 @@ public class MainViewModel : ObservableObject
 
     private void NavigatePeopleCommandExecute()
     {
-        _navigationService.CurrentViewModel = new PeopleViewModel();
+        _navigationService.ChangeCurrentViewModel(ViewTypes.People);
     }
 
     private void NavigateDemoCommandExecute()
     {
-        _navigationService.CurrentViewModel = new DemoViewModel(new DemoModel());
+        _navigationService.ChangeCurrentViewModel(ViewTypes.Demo);
     }
 
     private void NavigationServiceOnCurrentViewModelChanged()
