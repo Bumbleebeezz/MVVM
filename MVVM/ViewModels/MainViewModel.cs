@@ -1,17 +1,41 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MVVM.Models;
+using MVVM.Services;
 
 namespace MVVM.ViewModels;
 
-public class MainViewModel
+public class MainViewModel : ObservableObject
 {
-    public ObservableObject DemoViewModel { get; }
-    public ObservableObject PeopleViewModel { get; }
+    private readonly DemoNavigationService _navigationService;
 
+    public ObservableObject CurrentViewModel => _navigationService.CurrentViewModel;
 
+    public IRelayCommand NavigateDemoCommand { get; }
+    public IRelayCommand NavigatePeopleCommand { get; }
 
-    public MainViewModel(ObservableObject demoViewModel, ObservableObject peopleViewModel)
+    public MainViewModel(DemoNavigationService navigationService)
     {
-        DemoViewModel = demoViewModel;
-        PeopleViewModel = peopleViewModel;
+        _navigationService = navigationService;
+
+        NavigateDemoCommand = new RelayCommand(NavigateDemoCommandExecute);
+        NavigatePeopleCommand = new RelayCommand(NavigatePeopleCommandExecute);
+
+        _navigationService.CurrentViewModelChanged += NavigationServiceOnCurrentViewModelChanged;
+    }
+
+    private void NavigatePeopleCommandExecute()
+    {
+        _navigationService.CurrentViewModel = new PeopleViewModel();
+    }
+
+    private void NavigateDemoCommandExecute()
+    {
+        _navigationService.CurrentViewModel = new DemoViewModel(new DemoModel());
+    }
+
+    private void NavigationServiceOnCurrentViewModelChanged()
+    {
+        OnPropertyChanged(nameof(CurrentViewModel));
     }
 }

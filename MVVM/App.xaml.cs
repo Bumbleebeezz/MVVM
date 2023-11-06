@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using MVVM.Models;
+using MVVM.Services;
 using MVVM.ViewModels;
 
 namespace MVVM
@@ -15,14 +10,18 @@ namespace MVVM
     /// </summary>
     public partial class App : Application
     {
+        private readonly DemoNavigationService _navgationService;
+
+        public App()
+        {
+            _navgationService = new DemoNavigationService();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            var demoModel = new DemoModel();
-            var demoViewModel = new DemoViewModel(demoModel);
-            var peopleViewModel = new PeopleViewModel();
-            var mainViewModel = new MainViewModel(demoViewModel, peopleViewModel);
+            var mainViewModel = new MainViewModel(_navgationService);
 
             var mainWindow = new MainWindow(){DataContext = mainViewModel};
 

@@ -6,20 +6,35 @@
     xmlns:local="clr-namespace:MVVM"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:MVVM.Views"
+    xmlns:viewModels="clr-namespace:MVVM.ViewModels"
     Title="MainWindow"
     Width="800"
     Height="450"
     FontFamily="Yu Gothic Light"
     FontSize="20"
+    d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
     mc:Ignorable="d">
     <Grid>
-        <TabControl>
-            <TabItem Header="Reverse">
-                <views:DemoView DataContext="{Binding DemoViewModel}" Grid.Row="0"/>
-            </TabItem>
-            <TabItem Header="People">
-                <views:PeopleView DataContext="{Binding PeopleViewModel}" Grid.Row="1"/>
-            </TabItem>
-        </TabControl>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewModels:DemoViewModel}">
+                <views:DemoView></views:DemoView>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:PeopleViewModel}">
+                <views:PeopleView></views:PeopleView>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <Button Content="Demo" Command="{Binding NavigateDemoCommand}"></Button>
+            <Button Content="People" Command="{Binding NavigatePeopleCommand}"></Button>
+        </StackPanel>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}">
+
+        </ContentControl>
     </Grid>
 </Window>
